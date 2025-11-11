@@ -8,6 +8,4 @@ dependencies = [
     "opencv-python>=4.12.0.88",
     "supervision>=0.25.1",
     "tensorflow>=2.13.1",
-    "rospy",
-    "sensor-msgs"
 ]
