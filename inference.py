@@ -48,12 +48,6 @@ class YOLOv8TFLite:
         preprocess: Preprocess the input image before inference.
         postprocess: Process model outputs to extract and visualize detections.
         detect: Perform object detection on an input image.
-
-    Examples:
-        Initialize detector and run inference
-        >>> detector = YOLOv8TFLite("yolov8n.tflite", conf=0.25, iou=0.45)
-        >>> result = detector.detect("image.jpg")
-        >>> cv2.imshow("Result", result)
     """
 
     def __init__(
@@ -280,20 +274,19 @@ class YOLOv8TFLite:
             )
             detections_list.append(detections)
 
-            if len(detections_list) == 0:
-                return img
+        if len(detections_list) == 0:
+            return img
 
-            detections = sv.Detections.merge(detections_list)
+        detections = sv.Detections.merge(detections_list)
+        detections = tracker.update_with_detections(detections)
 
-            detections = tracker.update_with_detections(detections)
+        labels = [
+            f"COW {confidence:0.2f}"
+            for xyxy, mask, confidence, class_id, tracker_id, dtype in detections
+        ]
 
-            labels = [
-                f"COW {confidence:0.2f}"
-                for xyxy, mask, confidence, class_id, tracker_id, dtype in detections
-            ]
-
-            img = box_annotator.annotate(img, detections)
-            img = label_annotator.annotate(img, detections, labels)
+        img = box_annotator.annotate(img, detections)
+        img = label_annotator.annotate(img, detections, labels)
 
         t1 = time.time()
         print(f"{t1 - t0} postprocess\n")
@@ -346,7 +339,7 @@ frame_buffer = deque(maxlen=1)
 buffer_lock = threading.Lock()
 
 # Инициализация трекера и аннотаторов
-fps = 30  # Предполагаемая частота кадров, можно уточнить из топика
+fps = 30  # Предполагаемая частота кадров
 tracker = sv.ByteTrack(
     track_activation_threshold=0.3,
     minimum_matching_threshold=0.8,
@@ -356,14 +349,15 @@ tracker = sv.ByteTrack(
 box_annotator = sv.BoxAnnotator(thickness=2)
 label_annotator = sv.LabelAnnotator(text_thickness=1, text_scale=0.3, text_padding=3)
 
-# Создание детектора (инициализация один раз вне цикла)
+# Создание детектора
 detector = YOLOv8TFLite(model, conf, iou, metadata)
 
 
 def image_callback(msg):
-    """Callback для обработки изображений из ROS-топика"""
+    """Callback для обработки изображений из ROS-топика /camera/image_color"""
     try:
         # Конвертация ROS Image message в OpenCV BGR формат
+        # Топик /camera/image_color содержит RGB изображение, конвертируем в BGR для OpenCV
         cv_image = bridge.imgmsg_to_cv2(msg, "bgr8")
         with buffer_lock:
             frame_buffer.append(cv_image)
@@ -371,9 +365,9 @@ def image_callback(msg):
         rospy.logerr(f"Ошибка конвертации изображения: {e}")
 
 
-# Подписка на ROS-топик
+# Подписка на ROS-топик /camera/image_color
 rospy.Subscriber(
-    "/camera/image_raw", Image, image_callback, queue_size=1, buff_size=2**24
+    "/camera/image_color", Image, image_callback, queue_size=1, buff_size=2**24
 )
 
 # Запуск ROS в отдельном потоке
