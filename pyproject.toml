@@ -1,0 +1,11 @@
+[project]
+name = "hi-tech-cows"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.8.20"
+dependencies = [
+    "opencv-python>=4.12.0.88",
+    "supervision>=0.25.1",
+    "tensorflow>=2.13.1",
+]
