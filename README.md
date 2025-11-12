@@ -16,19 +16,23 @@ You can see all documents in /docs directory.
 3. Model metrics:
 > mAP=0.257
 ## Requirements:
-1. Rust:
+1. Python3.11:
+```bash
+sudo apt update
+sudo apt install python3.11 python3.11-venv python3.11-dev python3.11-pip
+```
+2. Rust:
 ```bash
 sudo apt update
 sudo apt upgrade -y
 sudo apt install rustc cargo
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
-2. Python uv:
+3. Python uv:
 ```bash
 sudo apt update && sudo apt install curl -y
 curl -LsSf https://astral.sh/uv/install.sh | sh
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-cargo install uv
 ```
 ## Installation instructions:
 Run:
