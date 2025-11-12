@@ -15,7 +15,28 @@ You can see all documents in /docs directory.
 > YOLOv8n utilizes classic YOLO architecture: It consists of Backbone (responsible for feature extracting), Neck (responsible for aggregation of multi-scale features) and Head (responsible for predicting bounding boxes and classes). Backbone - CSP + C2f, consists of conv-layers and SPPf. Neck utilizes modified PANet. Head is decoupled: two branches, one is regression (coordinates of bounding boxes), the other is classification (classes probability).
 3. Model metrics:
 > mAP=0.257
+## Requirements:
+1. Rust:
+```bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install rustc cargo
+```
+2. Python uv:
+```bash
+sudo apt update && sudo apt install curl -y
+curl -LsSf https://astral.sh/uv/install.sh | sh
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+cargo install uv
+```
 ## Installation instructions:
+Run:
+```bash
+git clone https://github.com/hxllmvdx/hi-tech-cows
+chmod +x ~/hi-tech-cows/setup.sh
+./hi-tech-cows/setup.sh
+```
 ## Usage:
 1. Open terminal in VNC-viewer (you must be connected to RPi through SSH)
 2. Call
