@@ -30,7 +30,7 @@ fi
 
 # Шаг 4: Установка системных Python-пакетов (быстрее и стабильнее для RPi)
 echo "🐍 Шаг 3: Установка системных Python-пакетов"
-sudo apt install -y python3-opencv python3-numpy python3-scipy python3-pil python3-sklearn
+sudo apt install -y python3-opencv python3-numpy python3-scipy python3-pil python3-sklearn python3-shapely
 
 # Шаг 5: Установка ROS-зависимостей (предполагается, что ROS уже установлен)
 echo "🤖 Шаг 4: Установка ROS-зависимостей"
@@ -40,15 +40,16 @@ sudo apt install -y ros-$(source /opt/ros/*/setup.sh && rosversion -d)-rospy \
 
 # Шаг 6: Создание виртуального окружения
 echo "🌱 Шаг 6: Создание виртуального окружения"
-if [ ! -d "cow_counter_env" ]; then
-  uv venv cow_counter_env --system-site-packages --python=python3.11
+if [ ! -d "cow_env" ]; then
+  uv venv cow_env --system-site-packages --python=python3.11
 fi
-source cow_counter_env/bin/activate
+source cow_env/bin/activate
 
 # Шаг 7: Установка Python-зависимостей
 echo "⚙️ Шаг 7: Установка Python-зависимостей"
 uv pip install tflite-runtime
-uv pip install --no-deps alphashape supervision
+uv pip install "shapely==1.8.5" "alphashape==1.3.1"
+uv pip install --no-deps supervision
 
 # Конец работы установщика
 echo "🎉 Установка завершена успешно!"
