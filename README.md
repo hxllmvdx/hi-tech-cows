@@ -7,7 +7,7 @@ Train an AI to detect cows and collect herd's parameters, install this algorithm
 ## Product tests:
 ## Documentation:
 You can see all documents in /docs directory.
-## Solution architecture - [Miro-board](https://miro.com/app/board/uXjVJrzMiTw=/)
+## Solution architecture - [Miro-board](https://miro.com/app/board/uXjVJrzMiTw=/?share_link_id=553219309650)
 ## About model:
 1. Model itself and It's purposes:
 > To solve this task we chose YOLOv8n, because of It's light weight and corresponding speed. This parameters were essential for us because of RPi's limited computing power and our desire to make UAV with our model on board completely autonomous.
