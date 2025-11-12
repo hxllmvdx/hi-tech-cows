@@ -280,10 +280,10 @@ class YOLOv8TFLite:
 
 
 # Параметры детектора
-model = "yolo_demo_edgetpu.tflite"
+model = "Yolo/yolo_demo_edgetpu.tflite"
 conf = 0.85
 iou = 0.35
-metadata = "metadata.yaml"
+metadata = "Yolo/metadata.yaml"
 
 # Инициализация ROS-ноды
 rospy.init_node("yolo_object_detector", anonymous=True)
