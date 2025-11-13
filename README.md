@@ -18,12 +18,14 @@ Train an AI to detect cows and collect herd's parameters, install this algorithm
 ![](resources/flight_photo1.jpeg)
 ![](resources/flight_photo2.jpeg)
 2. Model on video:
+
 On Mac:
 
 
 
 
 ![](resources/model_on_mac.gif)
+
 On RPi:
 
 
@@ -70,6 +72,7 @@ chmod +x ~/hi-tech-cows/setup.sh
 1. Open terminal in VNC-viewer (you must be connected to RPi through SSH)
 2. Call
 ```bash
+source ~/hi-tech-cows/cow_env/bin/activate
 python3 ~/hi-tech-cows/src/inference.py
 ```
 ## Used packages:
