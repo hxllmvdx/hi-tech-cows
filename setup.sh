@@ -48,8 +48,8 @@ source cow_env/bin/activate
 # Шаг 7: Установка Python-зависимостей
 echo "⚙️ Шаг 7: Установка Python-зависимостей"
 uv pip install tflite-runtime
-uv pip install "shapely==1.8.5" "alphashape==1.3.1"
-uv pip install --no-deps supervision
+uv pip install "numpy<2" trimesh rtree
+uv pip install --no-deps supervision alphashape
 
 # Конец работы установщика
 echo "🎉 Установка завершена успешно!"

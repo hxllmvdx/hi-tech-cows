@@ -18,9 +18,10 @@ Train an AI to detect cows and collect herd's parameters, install this algorithm
 ![](resources/flight_photo1.jpeg)
 ![](resources/flight_photo2.jpeg)
 2. Model on video:
-
-
-![](resources/video_inference.gif)
+On Mac:
+![](resources/model_on_mac.gif)
+On RPi:
+![](resources/model_on_rpi.gif)
 ## Documentation:
 You can see all documents in /docs directory.
 ## Solution architecture - [Miro-board](https://miro.com/app/board/uXjVJrzMiTw=/?share_link_id=553219309650)
@@ -30,7 +31,7 @@ You can see all documents in /docs directory.
 2. Model architecture:
 > YOLOv8n utilizes classic YOLO architecture: It consists of Backbone (responsible for feature extracting), Neck (responsible for aggregation of multi-scale features) and Head (responsible for predicting bounding boxes and classes). Backbone - CSP + C2f, consists of conv-layers and SPPf. Neck utilizes modified PANet. Head is decoupled: two branches, one is regression (coordinates of bounding boxes), the other is classification (classes probability).
 3. Model metrics:
-> mAP@0.50:0.65=0.257
+> mAP@0.50:0.95=0.257
 ## Requirements:
 1. Python3.11:
 ```bash
