@@ -10,7 +10,7 @@ from collections import deque
 import rospy
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
-from clusterization import find_clusters, get_cluster_parameters
+from clustering import find_clusters, get_cluster_parameters
 
 try:
     from tflite_runtime.interpreter import Interpreter, load_delegate
