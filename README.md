@@ -17,6 +17,10 @@ Train an AI to detect cows and collect herd's parameters, install this algorithm
 ![](resources/flight.gif)
 ![](resources/flight_photo1.jpeg)
 ![](resources/flight_photo2.jpeg)
+2. Model on video:
+
+
+![](resources/video_inference.gif)
 ## Documentation:
 You can see all documents in /docs directory.
 ## Solution architecture - [Miro-board](https://miro.com/app/board/uXjVJrzMiTw=/?share_link_id=553219309650)
