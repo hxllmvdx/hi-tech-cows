@@ -57,7 +57,7 @@ def get_cluster_parameters(cluster, cow_size):
                 return None, 0, 0
         else:
             # Для больших кластеров используем alphashape
-            alpha = 0.5  # Фиксированный alpha для скорости
+            alpha = sh.optimizealpha(cluster)  # Фиксированный alpha для скорости
             alpha_shape = sh.alphashape(cluster, alpha)
 
             if alpha_shape.geom_type == "Polygon":
