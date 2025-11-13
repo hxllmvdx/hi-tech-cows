@@ -19,8 +19,16 @@ Train an AI to detect cows and collect herd's parameters, install this algorithm
 ![](resources/flight_photo2.jpeg)
 2. Model on video:
 On Mac:
+
+
+
+
 ![](resources/model_on_mac.gif)
 On RPi:
+
+
+
+
 ![](resources/model_on_rpi.gif)
 ## Documentation:
 You can see all documents in /docs directory.
