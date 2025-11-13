@@ -5,9 +5,8 @@
 ## Task:
 Train an AI to detect cows and collect herd's parameters, install this algorithms on UAVs.
 ## Product tests:
-1. Flight
-<video src="https://github.com/hxllmvdx/hi-tech-cows/blob/dev/resources/flight_video.mp4" controls>
-</video>
+1. Flight:
+![](resources/flight.gif)
 ![](resources/flight_photo1.jpeg)
 ![](resources/flight_photo2.jpeg)
 ## Documentation:
