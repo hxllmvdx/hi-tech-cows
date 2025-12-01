@@ -7,7 +7,7 @@ echo "🚀 Начинаем установку зависимостей для �
 echo "🔧 Шаг 1: Обновление системы и установка базовых зависимостей"
 sudo apt update
 sudo apt install -y python3-dev python3-dev libatlas-base-dev libopenblas-dev liblapack-dev gfortran \
-  libsnappy-dev libsystemd-dev pkg-config build-essential curl wget
+  libsnappy-dev libsystemd-dev pkg-config build-essential curl wget libspatialindex-dev
 
 # Шаг 2: Проверка архитектуры системы
 ARCH=$(dpkg --print-architecture)
@@ -48,7 +48,7 @@ source cow_env/bin/activate
 # Шаг 7: Установка Python-зависимостей
 echo "⚙️ Шаг 7: Установка Python-зависимостей"
 uv pip install tflite-runtime
-uv pip install "numpy<2" trimesh rtree
+uv pip install "numpy<2" trimesh rtree tqdm
 uv pip install --no-deps supervision alphashape
 
 # Конец работы установщика
